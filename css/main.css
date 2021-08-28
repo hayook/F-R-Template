@@ -88,6 +88,33 @@ a {
 }
 /* End Global Rules */
 
+/* Start Scroll To Top */
+.up {
+    padding: 5px 10px;
+    background: var(--orange);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    font-size: 20px;
+    border-radius: 3px;
+    position: fixed;
+    bottom: 13px; right: -50px;
+    transform: scale(0);
+    opacity: (0);
+    transition: var(--main-transition);
+    cursor: pointer;
+    z-index: 1;
+}
+.up:hover {
+    background: var(--black);
+
+}
+.up.show {
+    right: 20px;
+    transform: scale(1);
+    opacity: 1;
+}
+/* End Scroll To Top */
+
 /* Start Header */
 header {
     padding: 20px 0;
@@ -104,20 +131,15 @@ header .container::before {
     height: .4px;
     background: var(--orange);
     position: absolute; 
-    top: calc(100% - 10px);
+    top: 100%;
     left: 50%;
     transform: translateX(-50%);
-}
-@media (max-width: 767px) {
-    header .container {
-        justify-content: space-evenly;
-    }
 }
 header .menu {
     display: none;
     transition: var(--main-transition);
-    cursor: pointer;
-    padding: 21px; 
+    cursor: pointer; 
+    padding: 21px 0;
 }
 header .menu:hover {
     color: var(--orange);
@@ -128,7 +150,7 @@ header .menu:hover {
         display: block;
         position: absolute;
         top: calc(100% - 20px); left: 0;
-        background: rgba(0 0 0 / 40%);
+        background: rgba(249 249 249 / 80%);
         padding: 20px; 
         width: 100%;
     }
@@ -171,12 +193,18 @@ header nav .sections a {
     header nav .sections a {
         display: block;
         margin-bottom: 10px;
-        color: var(--primary-color);
+        color: var(--black);
     }
 }
 header nav .sections li.active a,
 header nav .sections a:hover {
     color: var(--orange);
+}
+@media (max-width: 767px) {
+    header nav .sections a:hover {
+        margin-left: 15px; 
+        font-weight: bold;
+    }
 }
 header nav .icons {
     display: flex;
@@ -289,18 +317,21 @@ header nav .icons .cart::before {
     display: flex;
     align-items: center;
     width: 45%;
-    padding: 20px;
     border-radius: 5px;
     background: var(--primary-color);
+    border: 1px solid var(--orange);
 }
 @media (max-width: 991px) {
     .fst .fst-product {
+        margin-top: 50px;
         width: 80%;
     }
 }
 @media (max-width: 767px) {
     .fst .fst-product {
+        flex-direction: column;
         width: 100%;
+        margin-top: 50px;
     }
 } 
 .fst .fst-product img {
@@ -309,16 +340,10 @@ header nav .icons .cart::before {
 .fst .fst-product .descreption {
     margin-left: 50px;
 }
-@media (max-width: 991px) {
-    .fst .fst-product .descreption {
-
-        margin-left: 85px;
-    }
-}
 @media (max-width: 767px) {
     .fst .fst-product .descreption {
         text-align: center;
-        margin-left: 10px;
+        margin-top: 10px;
     }
 }
 .fst .fst-product .descreption p {
@@ -350,7 +375,7 @@ header nav .icons .cart::before {
 .products {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-gap: 0 20px;
+    grid-gap: 20px 20px;
 }
 .products .product {
     display: flex;
@@ -359,6 +384,7 @@ header nav .icons .cart::before {
     justify-content: center;
     padding: 20px; 
     position: relative;
+    border: 1px solid var(--orange);
 }
 .action {
     display: flex;
@@ -578,10 +604,11 @@ header nav .icons .cart::before {
 #blog .cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-    grid-gap: 0 15px; 
+    grid-gap: 15px 15px; 
 }
 #blog .cards .card {
     background: var(--primary-color);
+    border: 1px solid var(--orange);
 }
 #blog .cards .card img {
     width: 100%;
@@ -638,11 +665,15 @@ header nav .icons .cart::before {
     align-items: center;
     justify-content: center;
     width: 40%;
+    border: 1px solid var(--orange);
 }
 @media (max-width: 991px) {
     #contact form {
-        width: 80%;
+        width: 100%;
     }
+}
+#contact form i {
+    margin-left: 10px;
 }
 #contact form input[type="email"] {
     padding: 10px; 
